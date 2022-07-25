@@ -1,6 +1,7 @@
-import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, TouchableWithoutFeedback, View } from 'react-native'
+import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import React from 'react'
-import { Screen } from '../../../components'
+import { Screen, Logo } from '../../../components'
+import { SIZES } from '../../../constants'
 
 function ScreenAuth({children}) {
   return (
@@ -12,6 +13,7 @@ function ScreenAuth({children}) {
             onPress={() => {Keyboard.dismiss()}}
         >
             <Screen style={{alignItems: 'center'}}>
+                <Logo style={{position:'relative', marginBottom: SIZES.base * 5}} />
                 {children}
             </Screen>
         </TouchableWithoutFeedback>

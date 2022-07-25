@@ -1,14 +1,22 @@
-import { useFormikContext } from 'formik'
 import React from 'react'
+import { StyleSheet, View } from 'react-native';
+import { useFormikContext } from 'formik'
+
 import { AppTextInput, Paragraph } from '../../../components';
+import ErrorMessage from './errorMessage.component'
 
-import ErrorMessage from './ErrorMessage'
+import { SIZES } from '../../../constants';
 
-function FormField({id, otherStyle,...otherProps}) {
+function FormField({id, label, otherStyle,...otherProps}) {
     const {setFieldTouched, errors, touched, setFieldValue, values} = useFormikContext();
     return (
     <>
-        <Paragraph>{id}</Paragraph>
+        <View style={styles.labelWrapper}>
+            <Paragraph style={styles.label}>
+                {label}
+            </Paragraph>
+        
+        </View>
 
         <AppTextInput
             onChangeText={ (val) => setFieldValue(id, val)}
@@ -23,4 +31,15 @@ function FormField({id, otherStyle,...otherProps}) {
   )
 }
 
-export default FormField
+export default FormField;
+
+const styles = StyleSheet.create({
+    labelWrapper:{
+        alignSelf: 'flex-start',
+        paddingHorizontal: SIZES.padding,
+    },
+    label:{
+        textAlign: 'left',
+        textTransform: 'capitalize'
+    }
+})
