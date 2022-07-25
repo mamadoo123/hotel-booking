@@ -1,4 +1,5 @@
-import { StyleSheet, TextInput } from 'react-native'
+import { StyleSheet } from 'react-native'
+import {TextInput} from 'react-native-paper'
 import React, { useState } from 'react'
 import * as Yup from 'yup';
 
@@ -37,7 +38,12 @@ function LoginScreen() {
                 secureTextEntry={passwordVisible}
                 textContentType="password"
                 placeholder="Create your password"
-                //right = {<TextInput. />}
+                // right={
+                //   <TextInput.Icon 
+                //     name={passwordVisible ? "eye" : "eye-off"} 
+                //     onPress={() => setPasswordVisible(!passwordVisible)} 
+                //   />
+                //}
             />
 
             <SubmitButton title="Login" />
