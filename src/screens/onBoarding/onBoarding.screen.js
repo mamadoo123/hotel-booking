@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { ButtonLarge, ButtonMedium, Screen, Logo, AppTextInput } from '../../components'
 
 const OnBoardingScreen = () => {
   return (
-    <View style={styles.screen}>
-      <Text>OnBoardingScreen</Text>
-    </View>
+    <Screen style={styles.screen}>
+
+        
+    </Screen>
   )
 }
 
@@ -13,8 +15,7 @@ export default OnBoardingScreen
 
 const styles = StyleSheet.create({
     screen: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     }
 })
