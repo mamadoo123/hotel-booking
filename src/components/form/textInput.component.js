@@ -6,7 +6,7 @@ function AppTextInput({icon, style, ...otherProps }) {
   return (
     <View style={[styles.conatiner, style]} >
         <TextInput 
-            placeholderTextColor={COLORS.lightGray} 
+            placeholderTextColor={COLORS.lightGray}
             {...otherProps} 
             style={styles.text} 
         />

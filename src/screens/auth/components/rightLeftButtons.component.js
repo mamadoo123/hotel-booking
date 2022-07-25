@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
     container:{
         width: theme.SIZES.width,
         flexDirection: 'row',
+        marginVertical: theme.SIZES.base,
     },
 })
