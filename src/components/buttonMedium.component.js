@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     button:{
         alignItems: 'center',
         backgroundColor: theme.COLORS.green,
-        borderRadius: theme.SIZES.radius * 2,
+        borderRadius: theme.SIZES.radius * 3 ,
         justifyContent: 'center',
         marginVertical: 10,
         padding: theme.SIZES.padding,
-        width: theme.SIZES.width * 0.5,
+        width: theme.SIZES.width * 0.45,
     },
     title:{
         ...theme.FONTS.h2,
