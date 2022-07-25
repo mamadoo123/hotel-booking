@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import ScreenAuth from './components/screenContainer.component'
+import { Logo } from '../../components'
 
 function SignupScreen() {
   return (
     <ScreenAuth>
-        <Text>Sign up screen</Text>
+      <Logo />
+      
     </ScreenAuth>
   )
 }

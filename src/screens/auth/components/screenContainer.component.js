@@ -5,13 +5,13 @@ import { Screen } from '../../../components'
 function ScreenAuth({children}) {
   return (
     <KeyboardAvoidingView
-        style={{flex: 1}}
+        style={{flex: 1, }}
         behavior = {Platform.OS === 'ios' ? 'padding' : 'height'}
     >
         <TouchableWithoutFeedback 
             onPress={() => {Keyboard.dismiss()}}
         >
-            <Screen>
+            <Screen style={{alignItems: 'center'}}>
                 {children}
             </Screen>
         </TouchableWithoutFeedback>
