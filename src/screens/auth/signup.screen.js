@@ -11,6 +11,14 @@ const validationSchema = Yup.object().shape({
 })
 
 function SignupScreen() {
+
+  const dispatch = useDispatch()
+  
+  function onSubmitHanlder(values) {
+    console.log('values -> ', values);
+    dispatch(login('any', {name: 'John Smith', id: "user1", profileImg: '', ...values}))
+  }
+
   return (
     <ScreenAuth>
 
@@ -18,7 +26,7 @@ function SignupScreen() {
 
       <FormWrapper
             initialValues={{username: '',email: '', password: ''}}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={onSubmitHanlder}
             validationSchema={validationSchema}
       >
             <FormField

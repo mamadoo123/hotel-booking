@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native'
 import {TextInput} from 'react-native-paper'
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Yup from 'yup';
 
 import {FormWrapper, ScreenAuth, SubmitButton, FormField, RightLeftButtons} from './components';
 import { COLORS } from '../../constants';
+import { login } from '../../redux/actions/authActions';
 
 const validationSchema = Yup.object().shape({
   userid: Yup.string().required().min(3).max(55).label("username or email") || Yup.string().required().email().label("username or email"),
@@ -14,6 +16,12 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen() {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const dispatch = useDispatch()
+  
+  function onSubmitHanlder(values) {
+    console.log('values -> ', values);
+    dispatch(login('any', {name: 'John Smith', id: "user1", profileImg: '', ...values}))
+  }
 
   return (
     <ScreenAuth>
@@ -22,7 +30,7 @@ function LoginScreen() {
 
       <FormWrapper
             initialValues={{userid: '', password: ''}}
-            onSubmit={(values) => console.log(values)}
+            onSubmit={onSubmitHanlder}
             validationSchema={validationSchema}
       >
             <FormField
@@ -47,7 +55,7 @@ function LoginScreen() {
                         name={passwordVisible ? "eye" :"eye-off"} 
                         size={28} 
                         color={COLORS.lightGray}
-                        style={{position: 'absolute', right: -30, top: -10}} 
+                        //style={{position: 'absolute', right: -30, top: -10}} 
                       />
                     }   
                     onPress={() => setPasswordVisible(!passwordVisible)} 
