@@ -1,4 +1,5 @@
-import { StyleSheet, View, TextInput  } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import {TextInput} from 'react-native-paper'
 import React from 'react'
 import { COLORS, FONTS, SIZES } from '../../constants';
 
@@ -8,7 +9,15 @@ function AppTextInput({icon, style, ...otherProps }) {
         <TextInput 
             placeholderTextColor={COLORS.lightGray}
             {...otherProps} 
-            style={styles.text} 
+            underlineColorAndroid="transparent"
+            theme={{ 
+                colors: { 
+                    text: COLORS.dark, 
+                    primary: COLORS.white, 
+                    placeholder: COLORS.lightGray, 
+                    background: "transparent" 
+                }, 
+            }} 
         />
     </View>
   );

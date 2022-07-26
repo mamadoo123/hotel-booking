@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native'
 import {TextInput} from 'react-native-paper'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import * as Yup from 'yup';
 
 import {FormWrapper, ScreenAuth, SubmitButton, FormField, RightLeftButtons} from './components';
+import { COLORS } from '../../constants';
 
 const validationSchema = Yup.object().shape({
   userid: Yup.string().required().min(3).max(55).label("username or email") || Yup.string().required().email().label("username or email"),
@@ -38,12 +40,19 @@ function LoginScreen() {
                 secureTextEntry={passwordVisible}
                 textContentType="password"
                 placeholder="Create your password"
-                // right={
-                //   <TextInput.Icon 
-                //     name={passwordVisible ? "eye" : "eye-off"} 
-                //     onPress={() => setPasswordVisible(!passwordVisible)} 
-                //   />
-                //}
+                right={
+                  <TextInput.Icon
+                    name={() => 
+                      <MaterialCommunityIcons 
+                        name={passwordVisible ? "eye" :"eye-off"} 
+                        size={28} 
+                        color={COLORS.lightGray}
+                        style={{position: 'absolute', right: -30, top: -10}} 
+                      />
+                    }   
+                    onPress={() => setPasswordVisible(!passwordVisible)} 
+                  />
+                }
             />
 
             <SubmitButton title="Login" />
