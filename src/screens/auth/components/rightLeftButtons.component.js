@@ -1,24 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import {theme} from '../../../constants';
 import NavButton from './navButton.component';
+import routes from '../../../navigation/routes';
 
-const RightLeftButtons = () => {
-  return (
+function RightLeftButtons() {
+    const navigation = useNavigation();
+    const route = useRoute();
+
+    return (
     <View style={styles.container}>
         <NavButton 
-            onPress={() => {}}
-            isActive={false}
+            onPress={() => navigation.navigate(routes.LOGIN)}
+            isActive={route.name === routes.LOGIN}
             title="login"
         />
 
         <NavButton 
-            onPress={() => {}}
-            isActive={true}
+            onPress={() => navigation.navigate(routes.REGISTER)}
+            isActive={route.name === routes.REGISTER}
             title="Sign Up"
         />
     </View>
-  )
+    )
 }
 
 export default RightLeftButtons

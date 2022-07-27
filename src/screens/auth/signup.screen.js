@@ -1,8 +1,13 @@
 import { StyleSheet } from 'react-native'
-import React from 'react'
+import React,  { useState } from 'react'
+import {TextInput} from 'react-native-paper'
 import * as Yup from 'yup';
+import {useDispatch} from 'react-redux';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { COLORS } from '../../constants';
 import {FormWrapper, ScreenAuth, SubmitButton, FormField, RightLeftButtons} from './components';
+import { register } from '../../redux/actions/authActions';
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required().min(3).max(55).label("user name"),
@@ -11,12 +16,11 @@ const validationSchema = Yup.object().shape({
 })
 
 function SignupScreen() {
-
+  const [passwordVisible, setPasswordVisible] = useState(true);
   const dispatch = useDispatch()
   
   function onSubmitHanlder(values) {
-    console.log('values -> ', values);
-    dispatch(login('any', {name: 'John Smith', id: "user1", profileImg: '', ...values}))
+    dispatch(register('any', {name: 'John Smith', id: "user1", profileImg: '', ...values}))
   }
 
   return (
@@ -53,9 +57,21 @@ function SignupScreen() {
                 id="password"
                 autoCapitalize="none"
                 autoCorrect={false}
-                secureTextEntry={true}
+                secureTextEntry={passwordVisible}
                 textContentType="password"
-                placeholder="Create your password"
+                placeholder={"Create your password                                    "}
+                right={
+                  <TextInput.Icon
+                    name={() => 
+                      <MaterialCommunityIcons 
+                        name={passwordVisible ? "eye-off" :"eye"} 
+                        size={28} 
+                        color={COLORS.lightGray}
+                      />
+                    }   
+                    onPress={() => setPasswordVisible(!passwordVisible)} 
+                  />
+                }
             />
 
             <SubmitButton title="Register" />
