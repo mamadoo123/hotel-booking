@@ -31,8 +31,6 @@ export default HotelFlatList
 const styles = StyleSheet.create({
     flatList: {
         flexDirection: 'row',
-        //justifyContent: 'center',
-        //alignItems: 'center',
     },
 })
 

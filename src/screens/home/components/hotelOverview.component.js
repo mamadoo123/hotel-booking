@@ -39,7 +39,7 @@ export default HotelOverView
 
 const styles = StyleSheet.create({
     largeBtn: {
-        marginRight: theme.SIZES.base,
+        marginHorizontal: theme.SIZES.base,
         height: theme.SIZES.height * 0.5,
         width: theme.SIZES.width * 0.7,
         alignItems: 'center',
